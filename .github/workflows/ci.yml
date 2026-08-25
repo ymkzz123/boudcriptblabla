@@ -1,0 +1,40 @@
+name: Build Add-On
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Type-check
+        run: npm run typecheck
+
+      - name: Build production add-on
+        run: npm run mcaddon:production
+
+      - name: Upload mcaddon
+        uses: actions/upload-artifact@v4
+        with:
+          name: cryptbound-mcaddon
+          path: dist/packages/*.mcaddon
+          if-no-files-found: error
