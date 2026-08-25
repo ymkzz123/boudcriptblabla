@@ -99,6 +99,29 @@ Cryptbound는 서로 다른 성격을 가진 동물 카드와 제한된 에너�
 
 저장소 상단의 **Code → Codespaces → Create codespace on main**을 누르면 필요한 Node.js 환경이 자동으로 준비됩니다.
 
+#### 기존 Codespace의 파일 구조가 다를 때
+
+Codespace는 생성 당시의 브랜치와 커밋을 계속 사용합니다. 저장소에서 PR을 병합해도 이미 열어 둔 Codespace가 자동으로 최신 파일을 가져오지는 않습니다.
+
+먼저 터미널에서 현재 상태를 확인합니다.
+
+```bash
+git status --short
+git branch --show-current
+```
+
+수정 중인 파일이 없다면 `main`을 최신 상태로 동기화합니다.
+
+```bash
+git fetch origin
+git switch main
+git pull --ff-only origin main
+```
+
+수정 중인 파일이 표시되면 먼저 커밋하거나 `git stash push -u -m "before-main-sync"`로 임시 보관한 뒤 동기화하세요. 파일을 받은 다음 VS Code 명령 팔레트에서 **Codespaces: Rebuild Container**를 실행하면 새 `.devcontainer` 설정과 의존성이 적용됩니다.
+
+그래도 구조가 다르면 기존 Codespace를 유지한 채 저장소의 **Code → Codespaces**에서 `main` 기준 새 Codespace를 하나 만들어 비교하는 것이 가장 확실합니다.
+
 ### 직접 실행
 
 Node.js 22 이상이 필요합니다.
