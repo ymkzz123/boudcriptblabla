@@ -1,0 +1,26 @@
+{
+  "name": "cryptbound-bedrock-addon",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Minecraft Bedrock turn-based strategy card game add-on scaffold",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "just-scripts build",
+    "build:production": "just-scripts build --production",
+    "clean": "just-scripts clean",
+    "local-deploy": "just-scripts local-deploy",
+    "mcaddon": "just-scripts mcaddon",
+    "mcaddon:production": "just-scripts mcaddon --production",
+    "verify": "npm run typecheck && npm run build"
+  },
+  "devDependencies": {
+    "@minecraft/core-build-tasks": "^5.5.0",
+    "source-map": "^0.7.4",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@minecraft/server": "^2.0.0",
+    "@minecraft/server-ui": "^2.0.0"
+  }
+}

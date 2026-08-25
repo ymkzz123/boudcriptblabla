@@ -1,0 +1,38 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Cryptbound Behavior Pack",
+    "description": "Behavior and scripting scaffold for a turn-based strategy card game.",
+    "uuid": "f37057b7-d7c6-43dc-aca1-6a5ebf53f8b0",
+    "version": [0, 1, 0],
+    "min_engine_version": [1, 21, 90]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "81b63bba-7204-443b-98ae-486e06580991",
+      "version": [0, 1, 0]
+    },
+    {
+      "type": "script",
+      "language": "javascript",
+      "uuid": "28c19687-e336-4734-a740-32f859e72a2b",
+      "version": [0, 1, 0],
+      "entry": "scripts/main.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "131895aa-ed98-4a0f-9473-99d35348fb95",
+      "version": [0, 1, 0]
+    },
+    {
+      "module_name": "@minecraft/server",
+      "version": "2.0.0"
+    },
+    {
+      "module_name": "@minecraft/server-ui",
+      "version": "2.0.0"
+    }
+  ]
+}
