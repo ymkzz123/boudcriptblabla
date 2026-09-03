@@ -7,9 +7,15 @@ export interface DealResult {
 }
 
 export function createPersonalDeck(): CardId[] {
-  return CARD_IDS.flatMap((cardId) =>
-    Array.from({ length: COPIES_PER_CARD }, () => cardId),
-  );
+  const deck: CardId[] = [];
+
+  for (const cardId of CARD_IDS) {
+    for (let copy = 0; copy < COPIES_PER_CARD; copy += 1) {
+      deck.push(cardId);
+    }
+  }
+
+  return deck;
 }
 
 export function shuffleDeck(
