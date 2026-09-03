@@ -1,0 +1,22 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "cryptbound:card_butterfly",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:max_stack_size": 1,
+      "minecraft:display_name": {
+        "value": "나비"
+      },
+      "minecraft:icon": {
+        "textures": {
+          "default": "paper"
+        }
+      }
+    }
+  }
+}
