@@ -29,6 +29,9 @@ jobs:
       - name: Type-check
         run: npm run typecheck
 
+      - name: Test core life storage
+        run: npm run test:core
+
       - name: Build production add-on
         run: npm run mcaddon:production
 
