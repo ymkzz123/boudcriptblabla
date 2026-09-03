@@ -5,13 +5,14 @@
   "description": "Minecraft Bedrock turn-based strategy card game add-on scaffold",
   "scripts": {
     "typecheck": "tsc --noEmit",
+    "test:core": "ts-node --transpile-only --project tsconfig.test.json tests/core-life-storage.test.ts",
     "build": "just-scripts build",
     "build:production": "just-scripts build --production",
     "clean": "just-scripts clean",
     "local-deploy": "just-scripts local-deploy",
     "mcaddon": "just-scripts mcaddon",
     "mcaddon:production": "just-scripts mcaddon --production",
-    "verify": "npm run typecheck && npm run build"
+    "verify": "npm run typecheck && npm run test:core && npm run build"
   },
   "devDependencies": {
     "@minecraft/core-build-tasks": "^5.5.0",
