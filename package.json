@@ -21,7 +21,7 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
-    "@minecraft/server": "^2.0.0",
-    "@minecraft/server-ui": "^2.0.0"
+    "@minecraft/server": "2.0.0",
+    "@minecraft/server-ui": "2.0.0"
   }
 }

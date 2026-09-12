@@ -5,25 +5,16 @@ export interface CardSelectionResult {
   readonly handIndex: number;
 }
 
-export function findCardInHand(
-  hand: readonly CardId[],
-  cardId: CardId,
-): number {
-  return hand.indexOf(cardId);
-}
-
 export function selectCardFromHand(
   hand: readonly CardId[],
-  cardId: CardId,
+  handIndex: number,
 ): CardSelectionResult {
-  const handIndex = findCardInHand(hand, cardId);
-
-  if (handIndex < 0) {
-    throw new Error("Selected card is not in the player's hand.");
+  if (!Number.isInteger(handIndex) || handIndex < 0 || handIndex >= hand.length) {
+    throw new Error("Selected hand index is out of range.");
   }
 
   return {
-    selectedCard: cardId,
+    selectedCard: hand[handIndex],
     handIndex,
   };
 }
