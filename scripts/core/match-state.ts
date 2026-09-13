@@ -1,4 +1,5 @@
 import type { CardId } from "./card";
+import type { CardSelectionResult } from "./card-selection";
 
 export type MatchPhase =
   | "idle"
@@ -30,9 +31,8 @@ export interface MatchPlayerState {
   readonly deck: readonly CardId[];
   readonly hand: readonly CardId[];
   readonly usedCards: readonly CardId[];
-  readonly selectedCard: CardId | null;
+  readonly cardSelection: CardSelectionResult | null;
   readonly lifeBet: number | null;
-  readonly selectionLocked: boolean;
 }
 
 export interface MatchState {
