@@ -1,4 +1,5 @@
 import { selectCardFromHand, type CardSelectionResult } from "./card-selection";
+import type { CardId } from "./card";
 import type { MatchPlayerState, MatchState } from "./match-state";
 
 function findPlayerIndex(state: MatchState, playerId: string): 0 | 1 {
@@ -26,11 +27,10 @@ function validateSelection(
   return validatedSelection;
 }
 
-export function applyCardSelection(
+function getPlayerAwaitingCardSelection(
   state: MatchState,
   playerId: string,
-  selection: CardSelectionResult,
-): MatchState {
+): { readonly playerIndex: 0 | 1; readonly player: MatchPlayerState } {
   if (state.phase !== "cardSelection") {
     throw new Error("Card selection is not allowed in the current match phase.");
   }
@@ -41,6 +41,23 @@ export function applyCardSelection(
   if (player.cardSelection !== null) {
     throw new Error("Player has already committed a card selection.");
   }
+
+  return { playerIndex, player };
+}
+
+export function getCardSelectionHand(
+  state: MatchState,
+  playerId: string,
+): readonly CardId[] {
+  return getPlayerAwaitingCardSelection(state, playerId).player.hand;
+}
+
+export function applyCardSelection(
+  state: MatchState,
+  playerId: string,
+  selection: CardSelectionResult,
+): MatchState {
+  const { playerIndex, player } = getPlayerAwaitingCardSelection(state, playerId);
 
   const validatedSelection = validateSelection(player, selection);
   const updatedPlayer: MatchPlayerState = {
