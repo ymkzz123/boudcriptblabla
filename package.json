@@ -5,7 +5,7 @@
   "description": "Minecraft Bedrock turn-based strategy card game add-on scaffold",
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "test:core": "ts-node --transpile-only --project tsconfig.test.json tests/core-life-storage.test.ts && ts-node --transpile-only --project tsconfig.test.json tests/card-hand.test.ts && ts-node --transpile-only --project tsconfig.test.json tests/match-card-selection.test.ts && ts-node --transpile-only --project tsconfig.test.json tests/match-runtime.test.ts",
+    "test:core": "ts-node --transpile-only --project tsconfig.test.json tests/core-life-storage.test.ts && ts-node --transpile-only --project tsconfig.test.json tests/card-hand.test.ts && ts-node --transpile-only --project tsconfig.test.json tests/match-card-selection.test.ts && ts-node --transpile-only --project tsconfig.test.json tests/match-runtime.test.ts && ts-node --transpile-only --project tsconfig.test.json tests/match-life-betting.test.ts && ts-node --transpile-only --project tsconfig.test.json tests/life-betting-runtime.test.ts",
     "build": "just-scripts build",
     "build:production": "just-scripts build --production",
     "clean": "just-scripts clean",

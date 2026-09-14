@@ -4,6 +4,11 @@ import {
   applyCardSelection,
   getCardSelectionHand,
 } from "../core/match-card-selection";
+import {
+  applyLifeBet,
+  getLifeBettingLimits,
+  type LifeBettingLimits,
+} from "../core/match-life-betting";
 import type { MatchState } from "../core/match-state";
 
 type MatchTransition = (state: MatchState) => MatchState;
@@ -30,6 +35,16 @@ export class MatchController {
   ): Promise<MatchState> {
     return this.enqueueTransition((state) =>
       applyCardSelection(state, playerId, selection),
+    );
+  }
+
+  public getLifeBettingLimits(playerId: string): LifeBettingLimits {
+    return getLifeBettingLimits(this.currentState, playerId);
+  }
+
+  public submitLifeBet(playerId: string, lifeBet: number): Promise<MatchState> {
+    return this.enqueueTransition((state) =>
+      applyLifeBet(state, playerId, lifeBet),
     );
   }
 
